@@ -7,14 +7,19 @@
             check_level_admin();
             check_session();
             $this->load->model('M_dashboard', 'd');
+            $this->load->model('M_pendaftaran', 'p');
 		}
 
 		function index() {
-			$data['ilmiah'] = $this->d->viewCabang('ilmiah');
-			$data['olahraga'] = $this->d->viewCabang('olahraga');
-			$data['seni'] = $this->d->viewCabang('seni');
-			$data['riset'] = $this->d->viewCabang('riset');
+			$cabang['Ilmiah'] = $this->d->viewCabang('ilmiah')->result_array();
+			$cabang['Olahraga'] = $this->d->viewCabang('olahraga')->result_array();
+			$cabang['Seni'] = $this->d->viewCabang('seni')->result_array();
+			$cabang['Riset'] = $this->d->viewCabang('riset')->result_array();
+			$cabangData = $this->p->tampilCabang()->result_array()[0]; 
+			$data['selected'] = explode(", ",$cabangData['id_cabang']);
+			$data["cabang"] = $cabang;
 			$this->template->load('template','v_dashboard', $data);
+			// var_dump($data['selected']);
 		}
 
 		function pilihCabang() {

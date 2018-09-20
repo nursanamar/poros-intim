@@ -28,86 +28,28 @@
                                     
                                         <div class="skin skin-line">
                                             <?php echo form_open('Dashboard/pilihCabang') ?>
-                                                <div class="form-body">
-                                                    <div class="form-group">
-                                                        <div class="col-md-12">
-                                                            <label class="control-label">Ilmiah</label>
-                                                            <div class="input-group">
-                                                                <div class="icheck-inline">
-                                                                    <?php 
-                                                                        foreach ($ilmiah->result() as $i) {
-                                                                    ?>
-                                                                    <label>
-                                                                        <input type="checkbox" class="icheck" data-checkbox="icheckbox_line-red" data-label="<?php echo $i->nama_cabang ?>" value="<?php echo $i->id_cabang ?>" name="cabang[]"> 
-                                                                    </label>
-                                                                    <?php        
-                                                                        }
-                                                                     ?>
+                                                <?php foreach ($cabang as $nama => $list) { ?>
+                                                    <div class="form-body">
+                                                        <div class="form-group">
+                                                            <div class="col-md-12">
+                                                                <label class="control-label"><?php echo $nama ?></label>
+                                                                <div class="input-group">
+                                                                    <div class="icheck-inline"> 
+                                                                        <?php
+                                                                            foreach ($list as $item) { ?>
+                                                                            <label>
+                                                                                <input type="checkbox" class="icheck" <?php echo in_array($item['id_cabang'],$selected) ? "checked" : "" ?> data-checkbox="icheckbox_line-red" data-label="<?php echo $item['nama_cabang'] ?>" value="<?php echo $item['id_cabang'] ?>" name="cabang[]">
+                                                                            </label>
+                                                                        <?php        
+                                                                            } 
+                                                                         ?> 
+                                                                    </div>
                                                                 </div>
                                                             </div>
                                                         </div>
                                                     </div>
-                                                </div>
-                                                <div class="form-body">
-                                                    <div class="form-group">
-                                                        <div class="col-md-12">
-                                                            <label class="control-label">Olahraga</label>
-                                                            <div class="input-group">
-                                                                <div class="icheck-inline">
-                                                                    <?php 
-                                                                        foreach ($olahraga->result() as $o) {
-                                                                    ?>
-                                                                    <label>
-                                                                        <input type="checkbox" class="icheck" data-checkbox="icheckbox_line-green" data-label="<?php echo $o->nama_cabang ?>" value="<?php echo $o->id_cabang ?>" name="cabang[]"> 
-                                                                    </label>
-                                                                    <?php        
-                                                                        }
-                                                                     ?>
-                                                                </div>
-                                                            </div>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                                <div class="form-body">
-                                                    <div class="form-group">
-                                                        <div class="col-md-12">
-                                                            <label class="control-label">Seni</label>
-                                                            <div class="input-group">
-                                                                <div class="icheck-inline">
-                                                                    <?php 
-                                                                        foreach ($seni->result() as $s) {
-                                                                    ?>
-                                                                    <label>
-                                                                        <input type="checkbox" class="icheck" data-checkbox="icheckbox_line-orange" data-label="<?php echo $s->nama_cabang ?>" value="<?php echo $s->id_cabang ?>" name="cabang[]"> 
-                                                                    </label>
-                                                                    <?php        
-                                                                        }
-                                                                     ?>
-                                                                </div>
-                                                            </div>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                                <div class="form-body">
-                                                    <div class="form-group">
-                                                        <div class="col-md-12">
-                                                            <label class="control-label">Riset</label>
-                                                            <div class="input-group">
-                                                                <div class="icheck-inline">
-                                                                    <?php 
-                                                                        foreach ($riset->result() as $r) {
-                                                                    ?>
-                                                                    <label>
-                                                                        <input type="checkbox" class="icheck" data-checkbox="icheckbox_line-blue" data-label="<?php echo $r->nama_cabang ?>" value="<?php echo $r->id_cabang ?>" name="cabang[]"> 
-                                                                    </label>
-                                                                    <?php        
-                                                                        }
-                                                                     ?>
-                                                                </div>
-                                                            </div>
-                                                        </div>
-                                                    </div>
-                                                </div>
+                                               <?php } ?>
+                                                
                                                 <div class="row"></div>
                                                 <div style="height:40px"></div>
                                                 <div class="form-actions">
