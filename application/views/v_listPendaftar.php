@@ -24,10 +24,10 @@
                         </div>
                     </div>
                     <div class="portlet-body">
-                        <table class="table table-striped table-bordered table-hover table-header-fixed" id="sample_1">
+                        <table class="table table-striped table-bordered table-hover table-header-fixed" id="tableAll">
                             <thead>
                                 <tr class="">
-                                    <th> No </th>
+                                    
                                     <th> Nim </th>
                                     <th> Nama </th>
                                     <th> Jurusan </th>
@@ -37,33 +37,7 @@
                                 </tr>
                             </thead>
                             <tbody>
-                            	<?php 
-                            		$no = 1;
-                            		foreach ($peserta->result() as $p) {
-                            			echo 
-                        					"<tr>
-                            					<td>$no</td>
-                            					<td>$p->nim</td>
-                            					<td>$p->nama</td>
-                            					<td>$p->jurusan</td>
-                            					<td>$p->fakultas</td>
-                            					<td>
-                            						<a href='".base_url()."assets/upload/ktm/".$p->ktm."' class='btn btn-xs btn-primary' target='_blank'>Ktm</a> 
-                            						<a href='".base_url()."assets/upload/foto/".$p->foto."' class='btn btn-xs btn-default' target='_blank'>Foto</a>
-                            						<a href='".base_url()."assets/upload/rekomendasi/".$p->rekomendasi."' class='btn btn-xs btn-info' target='_blank'>Rekomendasi</a>
-                            						<a href='".base_url()."assets/upload/aktif/".$p->surat_aktif."' class='btn btn-xs btn-success' target='_blank'>Surat Aktif</a>
-                                                    <a href='".base_url()."assets/upload/dikti/".$p->dikti."' class='btn btn-xs btn-warning' target='_blank'>Bukti Dikti</a>
-                            					</td>
-                            					<td>
-                            						<a href='".base_url()."Pendaftaran/ubahPeserta/".$p->nim."' class='btn btn-sm btn-link'  title='Ubah data'><span class='glyphicon glyphicon-pencil'></span></a>";
-                            	?>
-													<a href="<?php echo base_url() ?>Pendaftaran/hapusPeserta/<?php echo $p->nim ?>" class='btn btn-sm btn-link' onclick="return confirm('Apakah anda yakin menghapus data ini?')" title='hapus data'><span class="glyphicon glyphicon-trash"></span></a>
-								<?php 
-                            			echo	"</td>
-                            				</tr>";
-                            				$no++;
-                            		}
-                            	 ?>
+                            	
                             </tbody>
                         </table>
                     </div>
@@ -77,3 +51,27 @@
     </div>
     <!-- END PAGE CONTENT INNER -->
 </div>
+
+<script>
+
+    $(document).ready(function(){
+        $('#tableAll').DataTable({
+                    processing: true,
+                    serverSide: true,
+                    ajax: {
+                        url: "<?php echo site_url('pendaftaran/tabelPeserta/').$this->uri->segment(3) ?>",
+                        type: "POST"
+                    },
+                    columns: [
+                       
+                        { data: "nim", name: "nim" },
+                        { data: "nama", name: "nama" },
+                        { data: "jurusan", name: "jurusan" },
+                        { data: "fakultas", name: "fakultas" },
+                        { data: "dokumen", name: "dokumen",orderable:false, searchable: false },
+                        { data: "action", name: "action",orderable:false, searchable: false },
+
+                    ]
+                });
+    })
+</script>
