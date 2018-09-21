@@ -43,6 +43,7 @@
 					redirect('Pendaftaran');
 				}
 			}
+			// var_dump($this->input->post());
 		}
 
 

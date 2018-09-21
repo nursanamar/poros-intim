@@ -28,22 +28,24 @@
                                     
                                         <div class="skin skin-line">
                                             <?php echo form_open('Dashboard/pilihCabang') ?>
+                                                
                                                 <?php foreach ($cabang as $nama => $list) { ?>
-                                                    <div class="form-body">
-                                                        <div class="form-group">
-                                                            <div class="col-md-12">
+                                                    <div class="col-md-6">
+                                                        <div class="form-body">
+                                                            <div class="form-group">
                                                                 <label class="control-label"><?php echo $nama ?></label>
                                                                 <div class="input-group">
-                                                                    <div class="icheck-inline"> 
+                                                                    <!-- <div class="icheck-inline">  -->
+                                                                        <select class="cabangSelect" multiple name="cabang[]">
                                                                         <?php
                                                                             foreach ($list as $item) { ?>
-                                                                            <label>
-                                                                                <input type="checkbox" class="icheck" <?php echo in_array($item['id_cabang'],$selected) ? "checked" : "" ?> data-checkbox="icheckbox_line-red" data-label="<?php echo $item['nama_cabang'] ?>" value="<?php echo $item['id_cabang'] ?>" name="cabang[]">
-                                                                            </label>
-                                                                        <?php        
+                                                                                <option <?php echo in_array($item['id_cabang'],$selected) ? "selected" : "" ?> value="<?php echo $item['id_cabang'] ?>"><?php echo $item['nama_cabang'] ?> </option>
+                                                                                
+                                                                                <?php        
                                                                             } 
-                                                                         ?> 
-                                                                    </div>
+                                                                            ?> 
+                                                                        </select>
+                                                                    <!-- </div> -->
                                                                 </div>
                                                             </div>
                                                         </div>

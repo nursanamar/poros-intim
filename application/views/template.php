@@ -21,6 +21,7 @@
         
         <!-- BEGIN PAGE LEVEL PLUGINS -->
         <link href="<?php echo base_url() ?>template/assets/global/plugins/bootstrap-daterangepicker/daterangepicker.min.css" rel="stylesheet" type="text/css" />
+        <link href="<?php echo base_url() ?>template/assets/global/plugins/jquery-multi-select/css/multi-select.css" rel="stylesheet" type="text/css" />
         <link href="<?php echo base_url() ?>template/assets/global/plugins/morris/morris.css" rel="stylesheet" type="text/css" />
         <link href="<?php echo base_url() ?>template/assets/global/plugins/fullcalendar/fullcalendar.min.css" rel="stylesheet" type="text/css" />
         <link href="<?php echo base_url() ?>template/assets/global/plugins/jqvmap/jqvmap/jqvmap.css" rel="stylesheet" type="text/css" />
@@ -371,6 +372,7 @@
         <script src="<?php echo base_url() ?>template/assets/pages/scripts/form-icheck.min.js" type="text/javascript"></script>
         <script src="<?php echo base_url() ?>template/assets/global/scripts/datatable.js" type="text/javascript"></script>
         
+        <script src="<?php echo base_url() ?>template/assets/global/plugins/jquery-multi-select/js/jquery.multi-select.js" type="text/javascript"></script>
         <script src="<?php echo base_url() ?>template/assets/global/plugins/datatables/datatables.min.js" type="text/javascript"></script>
         <script src="<?php echo base_url() ?>template/assets/global/plugins/datatables/plugins/bootstrap/datatables.bootstrap.js" type="text/javascript"></script>
           <script src="<?php echo base_url() ?>template/assets/pages/scripts/table-datatables-fixedheader.min.js" type="text/javascript"></script>
@@ -382,6 +384,10 @@
                 {
                     $('#radio1003').attr('checked', 'checked');
                 });
+
+                $('.cabangSelect').multiSelect();
+                $('.ms-selectable').prepend("<span>Pilihan</span>")
+                $('.ms-selection').prepend("<span>Terpilih</span>")
             })
         </script>
     </body>
