@@ -12,9 +12,19 @@
 			}
 		}
 
+		function selectedCabang() {
+			$data = $this->db->get_where('ptkin_cabang', array('id_ptkin'=>$this->session->userdata('id_ptkin')))->result_array();
+			if($data){
+				return explode(", ",$data[0]['id_cabang']);
+			}else{
+				return array();
+			}
+
+		}
+		
 		function tampilCabang() {
 			return $this->db->get_where('ptkin_cabang', array('id_ptkin'=>$this->session->userdata('id_ptkin')));
-		}
+	    }
 
 		function tambahPeserta($data) {
 			$this->db->insert('peserta', $data);

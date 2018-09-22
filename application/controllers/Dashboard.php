@@ -15,8 +15,8 @@
 			$cabang['Olahraga'] = $this->d->viewCabang('olahraga')->result_array();
 			$cabang['Seni'] = $this->d->viewCabang('seni')->result_array();
 			$cabang['Riset'] = $this->d->viewCabang('riset')->result_array();
-			$cabangData = $this->p->tampilCabang()->result_array()[0]; 
-			$data['selected'] = explode(", ",$cabangData['id_cabang']);
+			
+			$data['selected'] = $this->p->selectedCabang() ;
 			$data["cabang"] = $cabang;
 			$this->template->load('template','v_dashboard', $data);
 			// var_dump($data['selected']);
