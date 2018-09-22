@@ -21,6 +21,31 @@ class ADashboard extends MY_Controller
     {
         // $data['peserta'] = $this->d->listPeserta($idPtkin);
         $this->template->load('template', 'va_list');
+	}
+	
+	public function user()
+	{
+		$this->template->load('template','userAccount');
+    }
+    
+    public function userTable()
+    {
+        $this->dt->select("admin.username,admin.id_admin,ptkin.nama_ptkin");
+        $this->dt->from('admin');
+        $this->dt->join('ptkin','admin.id_ptkin=ptkin.id_ptkin','inner');
+
+        $result = json_decode($this->dt->generate('json'),true);
+        $data = array();
+
+        foreach ($result['data'] as $value) {
+            $value['aksi'] = "<a href='".base_url()."ADashboard/resetPassword/".$value['id_admin']."' >Reset Password</a>";
+            unset($value['id_admin']);
+            $data[] = $value;
+        }
+
+        $result['data'] = $data;
+
+        $this->sendResponse($result);
     }
 
     public function tabelPeserta($idPtkin)

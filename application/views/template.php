@@ -187,6 +187,11 @@
                                             </ul>
                                         </li>
                                          <?php } ?>
+                                          <li aria-haspopup="true" class='menu-dropdown classic-menu-dropdown <?php if ($this->uri->segment(2)=="user") {echo "active";} ?>'>
+                                            <a href="<?php echo base_url() ?>ADashboard/user"> Manajemen Akun
+                                                <span class="arrow"></span>
+                                            </a>
+                                        </li>
                                     </ul>
                                 </div>
                                 <!-- END MEGA MENU -->

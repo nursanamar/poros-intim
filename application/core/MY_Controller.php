@@ -29,7 +29,7 @@ class MY_Controller extends CI_Controller {
 		 $this->output->set_header("Access-Control-Allow-Origin: *");
 		 $this->output->set_header("X-Message: ApiBuilder/1.0");
 		 $this->output->set_header("Server: ApiBuilder",true);
-		$this->output->set_output(json_encode($data));
+		$this->output->set_output(json_encode($data,JSON_PRETTY_PRINT));
 	}
 
 	public function getBody()
