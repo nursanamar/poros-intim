@@ -21,7 +21,7 @@
                         </h6>
                         <h3 class="font-green-sharp">
                             <?php $tot = $this->db->get_where('peserta', array('id_ptkin'=>$this->session->userdata('id_ptkin')))->num_rows() ?>
-                            <span data-counter="counterup" data-value="<?php echo $tot; ?>">0</span>
+                             <span><?php echo $tot; ?></span>
                             <small class="font-green-sharp">Orang <span class="glyphicon glyphicon-th-list"></span></small>
                         </h3>
                     </div>
@@ -38,6 +38,7 @@
             </div>
         </div>
     </div>
+    <hr>
     <div class="row">
         
         <?php 
@@ -54,7 +55,7 @@
                             <small class="font-green-sharp"><?php echo $p->nama_cabang?></small><br>
                         </h6>
                         <h3 class="font-green-sharp">
-                            <span data-counter="counterup" data-value="<?php echo $jumpes; ?>">0</span>
+                            <span><?php echo $jumpes; ?></span>
                             <small class="font-green-sharp">Orang <span class="glyphicon glyphicon-th-list"></span></small>
                         </h3>
                         <small></small>
