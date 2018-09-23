@@ -47,7 +47,7 @@
                                 <!-- BEGIN LOGO -->
                                 <div class="page-logo">
                                     <a href="index.html">
-                                        <img src="<?php echo base_url() ?>assets/logo.png" alt="logo" class="logo-default">
+                                        <img src="<?php echo base_url() ?>assets/logo.png" alt="logo" class="logo-default" style="margin-top: 4px;">
                                     </a>
                                 </div>
                                 <!-- END LOGO -->
