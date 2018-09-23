@@ -25,6 +25,13 @@
 			$this->db->insert_batch('admin',$result);
 		}
 
+		public function updatePass($id,$newPass)
+		{
+			$this->db->set('password',$newPass);
+			$this->db->where('id_admin',$id);
+			$this->db->update('admin');
+		}
+
 	}
 
  ?>

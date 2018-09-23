@@ -38,7 +38,7 @@ class ADashboard extends MY_Controller
         $data = array();
 
         foreach ($result['data'] as $value) {
-            $value['aksi'] = "<a href='".base_url()."ADashboard/resetPassword/".$value['id_admin']."' >Reset Password</a>";
+            $value['aksi'] = "<a class='label label-info' href='".base_url()."ADashboard/resetPassword/".$value['id_admin']."' >Reset Password</a>";
             unset($value['id_admin']);
             $data[] = $value;
         }
@@ -46,6 +46,19 @@ class ADashboard extends MY_Controller
         $result['data'] = $data;
 
         $this->sendResponse($result);
+    }
+
+    public function resetPassword($idAdmin)
+    {
+        $this->template->load('template','resetPassword',array("id" => $idAdmin));
+    }
+
+    public function passReset()
+    {
+        $req = $this->input->post();
+        $newPass = md5($req['password']);
+        $this->d->updatePass($req['id'],$newPass);
+        redirect('ADashboard/user');
     }
 
     public function tabelPeserta($idPtkin)
