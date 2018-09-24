@@ -4,7 +4,7 @@
 
         function __construct() {
             parent::__construct();
-            $this->load->model('M_Auth', 'a');
+            $this->load->model('M_auth', 'a');
         }
 
         function login() {
