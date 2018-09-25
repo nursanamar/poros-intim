@@ -35,6 +35,49 @@
             </div>
         </div>
     </div>
+    <div class="row">
+        <div class="col-sm-12 col-md-12">
+            <div class="portlet light ">
+                <div class="portlet-title">
+                    <div class="caption font-dark">
+                        <i class="icon-settings font-dark"></i>
+                        <span class="caption-subject bold uppercase">List Data Peserta</span>
+                    </div>
+                </div>
+                <div class="portlet-body">
+                    <canvas id="ptkinChart"></canvas>
+                </div>
+            </div>
+            
+        </div>
+    </div>
 </div>
 <!-- END PAGE CONTENT INNER -->
 </div>
+
+<script src="<?php echo base_url() ?>assets/global/scripts/Chart.bundle.min.js"></script>
+<script>
+    $(document).ready(function(){
+        var ptkinChart = new Chart($("#ptkinChart"),{
+            type: 'bar',
+            data: {
+                labels: ["Red", "Blue", "Yellow", "Green", "Purple", "Orange"],
+                datasets: [{
+                    label: '',
+                    data: [12, 19, 3, 5, 2, 3],
+                    backgroundColor: [
+                       
+                    ]
+                },
+                {
+                        label: '# of Votes',
+                        data: [12, 19, 3, 5, 2, 3],
+                        backgroundColor: [
+                            
+                            'rgba(255, 159, 64, 0.2)'
+                        ]
+                    }]
+            }
+        })
+    })
+</script>
