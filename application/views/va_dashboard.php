@@ -45,6 +45,22 @@
                     </div>
                 </div>
                 <div class="portlet-body">
+                    <canvas id="cabangChart"></canvas>
+                </div>
+            </div>
+    
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-sm-12 col-md-12">
+            <div class="portlet light ">
+                <div class="portlet-title">
+                    <div class="caption font-dark">
+                        <i class="icon-settings font-dark"></i>
+                        <span class="caption-subject bold uppercase">List Data Peserta</span>
+                    </div>
+                </div>
+                <div class="portlet-body">
                     <canvas id="ptkinChart"></canvas>
                 </div>
             </div>
@@ -58,26 +74,28 @@
 <script src="<?php echo base_url() ?>assets/global/scripts/Chart.bundle.min.js"></script>
 <script>
     $(document).ready(function(){
-        var ptkinChart = new Chart($("#ptkinChart"),{
-            type: 'bar',
-            data: {
-                labels: ["Red", "Blue", "Yellow", "Green", "Purple", "Orange"],
-                datasets: [{
-                    label: '',
-                    data: [12, 19, 3, 5, 2, 3],
-                    backgroundColor: [
-                       
-                    ]
-                },
-                {
-                        label: '# of Votes',
-                        data: [12, 19, 3, 5, 2, 3],
-                        backgroundColor: [
-                            
-                            'rgba(255, 159, 64, 0.2)'
-                        ]
+        $.get("<?php echo site_url('ADashboard/seed') ?>",function(data){
+             var cabangChart = new Chart($("#cabangChart"), {
+                type: 'bar',
+                data: {
+                    labels: data.cabang.labels,
+                    datasets: [{
+                        data: data.cabang.data,
+                        backgroundColor: data.cabang.colors
                     }]
-            }
+                }
+            })
+            var ptkinChart = new Chart($("#ptkinChart"), {
+                type: 'bar',
+                data: {
+                    labels: data.ptkin.labels,
+                    datasets: [{
+                        data: data.ptkin.data,
+                        backgroundColor: data.ptkin.colors
+                    }]
+                }
+            })
         })
+       
     })
 </script>
