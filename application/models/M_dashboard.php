@@ -7,7 +7,9 @@
 		}
 
 		function inputCabang($data) {
-			$this->db->insert('ptkin_cabang', $data);
+			$this->db->where('id_ptkin',$this->session->userdata('id_ptkin'));
+			$this->db->delete('ptkin_cabang');
+			$this->db->insert_batch('ptkin_cabang', $data);
 		}
 
 		function editCabang($data, $id) {

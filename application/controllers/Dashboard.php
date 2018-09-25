@@ -23,27 +23,21 @@
 		}
 
 		function pilihCabang() {
-			if (isset($_POST['submit'])) {
-				$cabang = $_POST['cabang'];
-				$cabang = implode($cabang, ', ');
-				$cek = $this->d->cekRowCabang();
-				if ($cek == 1) {
-					$data = array
-							('id_cabang'=> $cabang,
-							'tgl_submit'=> date('Y-m-d'));
-					$this->d->editCabang($data, $this->session->userdata('id_ptkin'));
-					redirect('Pendaftaran');
+			$selected = $this->input->post('cabang');
+			if($selected){
+				$data = array();
+				$id_ptkin = $this->session->userdata('id_ptkin');
+				foreach ($selected as $value) {
+					$temp['id_ptkin'] = $id_ptkin;
+					$temp['id_cabang'] = $value;
+					$data[] = $temp;
 				}
-				else {
-					$data = array
-							('id_ptkin'=>$this->session->userdata('id_ptkin'),
-							'id_cabang'=> $cabang,
-							'tgl_submit'=> date('Y-m-d'));
-					$this->d->inputCabang($data);
-					redirect('Pendaftaran');
-				}
+
+				$this->d->inputCabang($data);
+				redirect('Pendaftaran');
+			}else{
+				redirect('Dashboard');
 			}
-			// var_dump($this->input->post());
 		}
 
 

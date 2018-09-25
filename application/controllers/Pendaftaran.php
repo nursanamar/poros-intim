@@ -17,7 +17,7 @@ class Pendaftaran extends MY_Controller
     {
         $cek = $this->p->cekRowCabang();
         if ($cek == 1) {
-            $data['cabang'] = $this->p->tampilCabang()->row_array();
+            $data['pilihan'] = $this->p->tampilCabang();
             $this->template->load('template', 'v_pendaftaran', $data);
         } else {
             echo "<script>alert('Anda belum memilih cabang perlombaan yang akan diikuti');window.location.assign('Dashboard');self.focus();</script>";

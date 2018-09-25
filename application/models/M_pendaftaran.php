@@ -15,7 +15,11 @@
 		function selectedCabang() {
 			$data = $this->db->get_where('ptkin_cabang', array('id_ptkin'=>$this->session->userdata('id_ptkin')))->result_array();
 			if($data){
-				return explode(", ",$data[0]['id_cabang']);
+				$result = array();
+				foreach ($data as $value) {
+					$result[] = $value['id_cabang'];
+				}
+				return $result;
 			}else{
 				return array();
 			}
@@ -23,7 +27,12 @@
 		}
 		
 		function tampilCabang() {
-			return $this->db->get_where('ptkin_cabang', array('id_ptkin'=>$this->session->userdata('id_ptkin')));
+			$this->db->select('cabang.id_cabang,cabang.nama_cabang,cabang.jenis');
+			$this->db->from('ptkin_cabang');
+			$this->db->join('cabang','cabang.id_cabang=ptkin_cabang.id_cabang','inner');
+			$this->db->where('id_ptkin',$this->session->userdata('id_ptkin'));
+			
+			return $this->db->get()->result_array();
 	    }
 
 		function tambahPeserta($data) {

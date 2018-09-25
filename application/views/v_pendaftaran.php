@@ -42,17 +42,16 @@
     <div class="row">
         
         <?php 
-            $in = "(".$cabang['id_cabang'].")";
-            $pilihan = $this->db->query("SELECT * FROM cabang WHERE id_cabang IN $in"); 
-            foreach ($pilihan->result() as $p) { 
-                $jumpes = $this->db->get_where('peserta', array('id_cabang'=>$p->id_cabang))->num_rows();  
+           
+            foreach ($pilihan as $p) { 
+                $jumpes = $this->db->get_where('peserta', array('id_cabang'=>$p['id_cabang']))->num_rows();  
          ?>
         <div class="col-lg-4 col-md-4 col-sm-6 col-xs-12">
             <div class="dashboard-stat2 ">
                 <div class="display">
                     <div class="number">
                         <h6 class="font-green-sharp">
-                            <small class="font-green-sharp"><?php echo $p->nama_cabang?></small><br>
+                            <small class="font-green-sharp"><?php echo $p['nama_cabang']?></small><br>
                         </h6>
                         <h3 class="font-green-sharp">
                             <span><?php echo $jumpes; ?></span>
@@ -66,8 +65,8 @@
                 </div>
                 <div class="progress-info">
                     <div class="status">
-                        <div class="status-title"> <?php echo $p->jenis ?> </div>
-                        <div class="status-number"><?php echo anchor('Pendaftaran/lihatPendaftar/'.$p->id_cabang, 'Lihat Peserta'); ?> </div>
+                        <div class="status-title"> <?php echo $p['jenis'] ?> </div>
+                        <div class="status-number"><?php echo anchor('Pendaftaran/lihatPendaftar/'.$p['id_cabang'], 'Lihat Peserta'); ?> </div>
                     </div>
                 </div>
             </div>
