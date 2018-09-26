@@ -37,6 +37,11 @@
     </div>
     <div class="row">
         <div class="col-sm-12 col-md-12">
+            <a style="margin-bottom: 10px;" class='btn btn-primary' href="<?= site_url('ADashboard/laporan') ?>">Print laporan</a>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-sm-12 col-md-12">
             <div class="portlet light ">
                 <div class="portlet-title">
                     <div class="caption font-dark">

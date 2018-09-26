@@ -8,6 +8,31 @@
 						WHERE p.id_cabang = c.id_cabang AND p.id_ptkin = pt.id_ptkin AND pt.id_ptkin='$idptkin'");
 		}
 
+
+		public function listPtkin()
+		{
+			return $this->db->get('ptkin')->result_array();
+		}
+
+		public function listCabang()
+		{
+			return $this->db->get('cabang')->result_array();
+		}
+
+		public function jumlahPeserta($idCabang,$idPtkin)
+		{
+			$this->db->where(array("id_cabang" => $idCabang,"id_ptkin" => $idPtkin));
+			$this->db->from('peserta');
+			return $this->db->count_all_results();
+		}
+
+		public function jumlahPesertaPtkin($idPtkin)
+		{
+			$this->db->where('id_ptkin',$idPtkin);
+			$this->db->from('peserta');
+			return $this->db->count_all_results();
+		}
+
 		
 		public function generate()
 		{

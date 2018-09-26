@@ -28,6 +28,13 @@ class ADashboard extends MY_Controller
 		$this->template->load('template','userAccount');
     }
 
+    public function laporan()
+    {
+        $data['listPtkin'] = $this->d->listPtkin();
+        $data['listCabang'] = $this->d->listCabang();
+        $this->load->view('laporan',$data);
+    }
+
     public function chartData()
     {
        $res['cabang'] = $this->d->dataReport();
