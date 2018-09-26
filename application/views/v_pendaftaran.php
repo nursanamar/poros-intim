@@ -44,7 +44,7 @@
         <?php 
            
             foreach ($pilihan as $p) { 
-                $jumpes = $this->db->get_where('peserta', array('id_cabang'=>$p['id_cabang']))->num_rows();  
+                $jumpes = $this->db->get_where('peserta', array('id_cabang' => $p['id_cabang'],"id_ptkin" => $this->session->userdata('id_ptkin')))->num_rows();  
          ?>
         <div class="col-lg-4 col-md-4 col-sm-6 col-xs-12">
             <div class="dashboard-stat2 ">
