@@ -74,7 +74,7 @@
 <script src="<?php echo base_url() ?>assets/global/scripts/Chart.bundle.min.js"></script>
 <script>
     $(document).ready(function(){
-        $.get("<?php echo site_url('ADashboard/seed') ?>",function(data){
+        $.get("<?php echo site_url('ADashboard/chartData') ?>",function(data){
              var cabangChart = new Chart($("#cabangChart"), {
                 type: 'bar',
                 data: {

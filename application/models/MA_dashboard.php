@@ -54,6 +54,32 @@
 
 		}
 
+		public function seedPtkinCabang()
+		{
+			$ptkin = $this->db->select('id_ptkin')->get('ptkin')->result_array();
+			$result = array();
+			foreach ($ptkin as $value) {
+				$this->db->distinct('id_cabang');
+				$this->db->select('id_cabang');
+				$this->db->where('id_ptkin',$value['id_ptkin']);
+				$cabang = $this->db->get('peserta')->result_array();
+				
+				foreach ($cabang as $valu) {
+					$result[] = array(
+						"id_ptkin" => $value['id_ptkin'],
+						"id_cabang" => $valu['id_cabang']
+					);
+
+					// echo $value['id_ptkin']." - ".$valu['id_cabang']." , ";
+				}
+				// echo "<br>";
+				// var_dump($cabang);
+				// echo "<br>";
+			}
+
+			$this->db->insert_batch('ptkin_cabang',$result);
+		}
+
 
 		public function dataReport()
 		{

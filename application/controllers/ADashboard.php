@@ -28,13 +28,18 @@ class ADashboard extends MY_Controller
 		$this->template->load('template','userAccount');
     }
 
-    public function seed()
+    public function chartData()
     {
        $res['cabang'] = $this->d->dataReport();
        $res['ptkin'] = $this->d->ptkinReport();
        $this->sendResponse($res);
 
         // var_dump();
+    }
+
+    public function seed()
+    {
+        $this->d->seedPtkinCabang();
     }
     
     public function userTable()
