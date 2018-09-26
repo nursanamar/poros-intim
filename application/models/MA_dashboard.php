@@ -40,11 +40,11 @@
 
 			$result = array();
 			// var_dump($example,$ids_cabang,$ids_ptkin);
-			for ($i=1; $i <= 100 ; $i++) {
+			for ($i=1; $i <= 500 ; $i++) {
 				$ptkin_key = array_rand($ids_ptkin); 
 				$cabang_key = array_rand($ids_cabang);
 				$temp = $example[0];
-				$temp['nim'] = $temp['nim'] + $i;
+				$temp['nim'] = $temp['nim'] + ($i + 100);
 				$temp['id_ptkin'] = $ids_ptkin[$ptkin_key]['id_ptkin'];
 				$temp['id_cabang'] = $ids_cabang[$cabang_key]['id_cabang'];
 				$result[] = $temp;
